@@ -7,12 +7,12 @@ import NoMatch from './Components/NoMatch/NoMatch';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import { loggedInInfo } from './Components/Login/loginManager';
 import DashboardLayout from './Pages/DashboardLayout/DashboardLayout';
-import AdminServiceList from './Components/Dashboard/AdminServiceList/AdminServiceList';
 import AddService from './Components/Dashboard/AddHouse/AddHouse';
 import AddAdmin from './Components/Dashboard/AddAdmin/AddAdmin';
 import ApartmentDetails from './Components/ApartmentDetails/ApartmentDetails';
 import NavBar from './Components/Home/NavBar/NavBar';
 import ClientRentList from './Components/Dashboard/ClientRentList/ClientRentList';
+import AdminBookingList from './Components/Dashboard/AdminBookingList/AdminBookingList';
 // ========================================================================================
 
 // Context
@@ -80,7 +80,7 @@ function App() {
 
               <PrivateRoute exact path='/admin-booking-lists'>
                 <DashboardLayout title='Booking List'>
-                  <AdminServiceList />
+                  <AdminBookingList/>
                 </DashboardLayout>
               </PrivateRoute>
               <PrivateRoute exact path='/addHouse'>

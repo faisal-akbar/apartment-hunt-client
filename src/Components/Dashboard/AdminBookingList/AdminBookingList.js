@@ -4,11 +4,11 @@ import { AdminContext, AdminContextTemp } from '../../../App';
 import PreLoader from '../../PreLoader/PreLoader';
 // ==============================================================================
 
-const AdminServiceList = () => {
-  // This is table showed in the Admin Dashboard with List of service register
-  // Set List of service register:
-  const [serviceList, setServiceList] = useState([]);
-  const [selectService, setSelectService] = useState({});
+const AdminBookingList = () => {
+  // This is table showed in the Admin Dashboard with List of booking
+  // Set List of booking register:
+  const [bookingList, setBookingList] = useState([]);
+  const [selectBook, setSelectBook] = useState({});
 
     // loader
     const [loading, setLoading] = useState(true);
@@ -18,15 +18,15 @@ const AdminServiceList = () => {
     fetch('http://apartment-hunt-react.herokuapp.com/adminServices')
       .then((res) => res.json())
       .then((data) => {
-        setServiceList(data);
+        setBookingList(data);
         setLoading(false);
       });
-  }, [serviceList]);
+  }, [bookingList]);
 
   // Update when admin change status and update the dashboard
   const updateStatus = (status) => {
-    const data = { _id: selectService._id, status };
-    console.log(selectService, 'status', status);
+    const data = { _id: selectBook._id, status };
+    console.log(selectBook, 'status', status);
 
     fetch(
       `http://apartment-hunt-react.herokuapp.com/updateServiceStatus/${data._id}`,
@@ -81,7 +81,7 @@ const AdminServiceList = () => {
                 Email ID
               </th>
               <th className='text-secondary' scope='col'>
-                {/* Service */}
+                {/* booking */}
                 Phone No
               </th>
               <th className='text-secondary' scope='col'>
@@ -94,42 +94,42 @@ const AdminServiceList = () => {
             </tr>
           </thead>
           <tbody>
-            {serviceList.map((service) => (
-              <tr key={service._id}>
+            {bookingList.map((booking) => (
+              <tr key={booking._id}>
                 <td>{serialNo++}</td>
-                <td>{service.name}</td>
-                <td>{service.email}</td>
-                <td>{service.phone}</td>
-                <td>{service.message}</td>
+                <td>{booking.name}</td>
+                <td>{booking.email}</td>
+                <td>{booking.phone}</td>
+                <td>{booking.message}</td>
 
                 <td className='text-center'>
                   <select
-                    onClick={() => setSelectService(service)}
+                    onClick={() => setSelectBook(booking)}
                     onChange={(e) => updateStatus(e.target.value)}
                     className={
-                      service.status == 'Pending'
+                      booking.status == 'Pending'
                         ? 'btn btn-danger'
-                        : service.status == 'Done'
+                        : booking.status == 'Done'
                         ? 'btn btn-success'
-                        : service.status == 'On going'
+                        : booking.status == 'On going'
                         ? 'btn btn-warning'
                         : 'btn btn-dark'
                     }
                   >
                     <option
-                      selected={service.status == 'Pending'}
+                      selected={booking.status == 'Pending'}
                       className='bg-white text-secondary'
                     >
                       Pending
                     </option>
                     <option
-                      selected={service.status == 'On going'}
+                      selected={booking.status == 'On going'}
                       className='bg-white text-secondary'
                     >
                       On going
                     </option>
                     <option
-                      selected={service.status == 'Done'}
+                      selected={booking.status == 'Done'}
                       className='bg-white text-secondary'
                     >
                       Done
@@ -146,4 +146,4 @@ const AdminServiceList = () => {
   );
 };
 
-export default AdminServiceList;
+export default AdminBookingList;

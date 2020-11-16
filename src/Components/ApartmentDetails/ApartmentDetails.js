@@ -3,42 +3,45 @@ import { useForm } from 'react-hook-form';
 import { useHistory, useParams } from 'react-router-dom';
 import { UserContext } from '../../App';
 import cover from '../../assets/images/cover.png';
-import FakeData from '../../FakeData/FakeData';
 import { loggedInInfo } from '../Login/loginManager';
+import PreLoader from '../PreLoader/PreLoader';
 
 const ApartmentDetails = () => {
   const { _id } = useParams();
+  // loader
+  const [loading, setLoading] = useState(true);
   // Set state
   const [selectedApt, setSelectedApt] = useState([]);
-  const loggedUser = loggedInInfo()
+  const loggedUser = loggedInInfo();
 
-    // Get the single Service user clicked from API:
-    useEffect(() => {
-      fetch(`http://apartment-hunt-react.herokuapp.com/apartments/${_id}`)
-        .then((res) => res.json())
-        .then((data) => setSelectedApt(data));
-    }, [_id]);
-  
+  // Get the single Service user clicked from API:
+  useEffect(() => {
+    fetch(`http://apartment-hunt-react.herokuapp.com/apartments/${_id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setSelectedApt(data);
+        setLoading(false);
+      });
+  }, [_id]);
 
   const { register, handleSubmit, errors } = useForm();
 
   // handle redirected to user task
   let history = useHistory();
   function handleUserRequest() {
-    if(!loggedUser){
-    history.push('/my-rent');
-    }
-    else {
-      history.push(`apartment-details/${_id}`)
+    if (!loggedUser) {
+      history.push('/my-rent');
+    } else {
+      history.push(`apartment-details/${_id}`);
     }
   }
 
   // When user registered send the data to server and redirect user to UserDashboard
   const onSubmit = (data) => {
     const newHouse = { ...data };
-    newHouse.price = selectedApt.price
-    newHouse.apartment_name = selectedApt.apartment_name
-    newHouse.status='Pending';
+    newHouse.price = selectedApt.price;
+    newHouse.apartment_name = selectedApt.apartment_name;
+    newHouse.status = 'Pending';
     // newHouse.image = selectedApt.image;
 
     fetch('http://apartment-hunt-react.herokuapp.com/addRegistration', {
@@ -73,16 +76,17 @@ const ApartmentDetails = () => {
 
       <section className='container'>
         <div className='row'>
-          <div className='col-md-7 mt-5'>
-          {selectedApt.image ? (
-          <img
-            className='w-100'
-            src={`data:image/png;base64,${selectedApt.image.img}`}
-          />
-        ) : (
-          <img className='w-100' src={selectedApt.img} alt='' />
-        )}
-
+        <PreLoader loading={loading} />
+          <div className='col-md-7 mt-4'>
+          
+            {selectedApt.image ? (
+              <img
+                className='w-100'
+                src={`data:image/png;base64,${selectedApt.image.img}`}
+              />
+            ) : (
+              <img className='w-100' src={selectedApt.img} alt='' />
+            )}
 
             <div className='mt-4'>
               <div className='d-flex justify-content-between'>
@@ -99,17 +103,19 @@ const ApartmentDetails = () => {
               <h4>Price Details- </h4>
               <p>
                 {' '}
-                {selectedApt.rent_month}
-                {selectedApt.service_charge} <br />
-                {selectedApt.security_deposit}<br />
-                {selectedApt.flat_release_policy}
+                Rent per month: {selectedApt.rent_month}
+                <br />
+                Service Charge: {selectedApt.service_charge} <br />
+                Security deposit: {selectedApt.security_deposit}
+                <br />
+                Flat release policy: {selectedApt.flat_release_policy}
               </p>
               <h4 className='mt-3'>Property Details- </h4>
               <p>{selectedApt.property_details}</p>
             </div>
           </div>
 
-          <div className='col-md-5 mt-5'>
+          <div className='col-md-5 mt-4'>
             <form
               onSubmit={handleSubmit(onSubmit)}
               className='shadow bg-white rounded text-left p-3'
@@ -145,13 +151,11 @@ const ApartmentDetails = () => {
                   value={loggedUser.email}
                   placeholder='Email'
                   ref={register({ required: true })}
-                  
                 />
                 {errors.email && (
                   <span className='error'>Email is required</span>
                 )}
               </div>
-
 
               <div className='form-group'>
                 <textarea

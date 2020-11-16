@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
 import { AdminContext, AdminContextTemp } from '../../../App';
+
 // ========================================================
 
 const AddService = () => {
@@ -20,19 +21,21 @@ const AddService = () => {
     setFile(newFile);
   };
 
-  const onSubmit = () => {
+  const onSubmit = (data) => {
     const formData = new FormData();
+
+const info ={...data}
     // console.log(serviceInfo);
     formData.append('file', file);
     formData.append('apartment_name', houseInfo.apartment_name);
     formData.append('address', houseInfo.address);
     formData.append('no_bedrooms', houseInfo.no_bedrooms);
     formData.append('no_bathroom', houseInfo.no_bathroom);
-    formData.append('rent_month', houseInfo.rent_month);
-    formData.append('service_charge', houseInfo.service_charge);
-    formData.append('security_deposit', houseInfo.security_deposit);
-    formData.append('flat_release_policy', houseInfo.flat_release_policy);
-    formData.append('property_details', houseInfo.property_details);
+    formData.append('rent_month', info.rent_month);
+    formData.append('service_charge', info.service_charge);
+    formData.append('security_deposit', info.security_deposit);
+    formData.append('flat_release_policy', info.flat_release_policy);
+    formData.append('property_details', info.property_details);
     formData.append('price', houseInfo.price);
 
     fetch('http://apartment-hunt-react.herokuapp.com/addHouse', {
@@ -137,7 +140,6 @@ const AddService = () => {
               <label for='rent_month'>Rent per month</label>
               <input
                 className='form-control'
-                onBlur={handleBlur}
                 name='rent_month'
                 type='text'
                 defaultValue='$550 (negotiable)'
@@ -152,7 +154,6 @@ const AddService = () => {
               <label for='service_charge'>Service charge</label>
               <input
                 className='form-control'
-                onBlur={handleBlur}
                 name='service_charge'
                 type='text'
                 defaultValue='$100 per month, subject to change'
@@ -175,7 +176,6 @@ const AddService = () => {
                 onBlur={handleBlur}
                 name='security_deposit'
                 type='text'
-                defaultValue='3 month’s rent'
                 placeholder='Security deposit'
                 ref={register({ required: true })}
               />
@@ -187,7 +187,6 @@ const AddService = () => {
               <label for='flat_release_policy'>Flat release policy</label>
               <input
                 className='form-control'
-                onBlur={handleBlur}
                 name='flat_release_policy'
                 type='text'
                 defaultValue='3 months earlier notice required'
@@ -203,7 +202,6 @@ const AddService = () => {
               <label for='property_details'>Property details</label>
               <textarea
                 className='form-control'
-                onBlur={handleBlur}
                 name='property_details'
                 placeholder='Property details'
                 defaultValue='Address & Area : Rangs Malancha, House-68, Road-6A (Dead End Road), Dhanmondi Residential Area. Flat Size : 3000 Sq Feet. Floor :  A5 (5th Floor) (6 storied Building ) (South Facing Unit), Room Category : 3 Large Bed Rooms with 3 Verandas, Spacious Drawing, Dining & Family Living Room, Highly Decorated Kitchen with Store Room and Servant room with attached Toilet. Facilities : 1 Modern Lift, All Modern Amenities & Semi Furnished. Additional Facilities : a. Electricity with full generator load, b. Central Gas Geyser, c. 2 Car Parking with 1 Driver’s Accommodation, d. Community Conference Hall, e. Roof Top Beautified Garden and Grassy Ground, f. Cloth Hanging facility with CC camera'
