@@ -19,7 +19,7 @@ const AddAdmin = () => {
     const newAdmin = { ...data };
     console.log('new admin', newAdmin);
 
-    fetch('http://localhost:5000/addAdmin', {
+    fetch('http://apartment-hunt-react.herokuapp.com/addAdmin', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newAdmin),

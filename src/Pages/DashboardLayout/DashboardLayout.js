@@ -17,7 +17,7 @@ const MainDashboard = (props) => {
         <div className='col-md-2'>
           <Link to='/'>
             <img
-              className='text-center ml-3'
+              className='text-center ml-4'
               style={{ height: '50px' }}
               src={logo}
               alt=''

@@ -15,7 +15,7 @@ const AdminServiceList = () => {
 
   // Get all the Volunteer Register
   useEffect(() => {
-    fetch('http://localhost:5000/adminServices')
+    fetch('http://apartment-hunt-react.herokuapp.com/adminServices')
       .then((res) => res.json())
       .then((data) => {
         setServiceList(data);
@@ -29,7 +29,7 @@ const AdminServiceList = () => {
     console.log(selectService, 'status', status);
 
     fetch(
-      `http://localhost:5000/updateServiceStatus/${data._id}`,
+      `http://apartment-hunt-react.herokuapp.com/updateServiceStatus/${data._id}`,
       {
         method: 'PATCH',
         headers: {

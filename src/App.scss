@@ -42,38 +42,10 @@
   margin-left: 10px;
 }
 
-/* .btn-brand {
-  background-color: #111430 !important;
-  color: #fff !important;
-  border-color: transparent;
-  font-family: 'Roboto', sans-serif;
+.card {
+	transition: all .2s ease-in-out;
+	&:hover {
+		transform: scale(1.04);
+	}
 }
 
-.file-upload input[type='file'] {
-  display: none;
-}
-
-.btn-success {
-  background-color: #275a53 !important;
-}
-
-.btn-outline-success {
-  background-color: #deffed !important;
-}
-
-.btn-outline-success:hover {
-  background-color: #275a53 !important;
-}
-
-.client-form .form-control {
-  border: none;
-}
-
-.client-form .form-control:focus {
-  box-shadow: none;
-}
-
-.error {
-  color: salmon;
-  margin-left: 10px;
-} */

@@ -20,7 +20,7 @@ const ClientRentList = () => {
 
   // Dynamically filter loggedInUser data from API:
   useEffect(() => {
-    fetch('http://localhost:5000/clientServices?email=' + loggedUser.email, {
+    fetch('http://apartment-hunt-react.herokuapp.com/clientServices?email=' + loggedUser.email, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

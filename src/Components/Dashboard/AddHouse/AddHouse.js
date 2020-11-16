@@ -35,7 +35,7 @@ const AddService = () => {
     formData.append('property_details', houseInfo.property_details);
     formData.append('price', houseInfo.price);
 
-    fetch('http://localhost:5000/addHouse', {
+    fetch('http://apartment-hunt-react.herokuapp.com/addHouse', {
       method: 'POST',
       body: formData,
     })

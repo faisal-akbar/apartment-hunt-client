@@ -14,7 +14,7 @@ const ApartmentDetails = () => {
 
     // Get the single Service user clicked from API:
     useEffect(() => {
-      fetch(`http://localhost:5000/apartments/${_id}`)
+      fetch(`http://apartment-hunt-react.herokuapp.com/apartments/${_id}`)
         .then((res) => res.json())
         .then((data) => setSelectedApt(data));
     }, [_id]);
@@ -41,7 +41,7 @@ const ApartmentDetails = () => {
     newHouse.status='Pending';
     // newHouse.image = selectedApt.image;
 
-    fetch('http://localhost:5000/addRegistration', {
+    fetch('http://apartment-hunt-react.herokuapp.com/addRegistration', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newHouse),

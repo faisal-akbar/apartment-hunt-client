@@ -14,7 +14,7 @@ const Home = () => {
 
   // Get data from API and set the data:
   useEffect(() => {
-    fetch('http://localhost:5000/apartments')
+    fetch('http://apartment-hunt-react.herokuapp.com/apartments')
       .then((res) => res.json())
       .then((data) => {
         setApartments(data);
