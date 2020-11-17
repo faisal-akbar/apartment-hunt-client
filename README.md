@@ -1,17 +1,16 @@
 # Apartment Hunt
 
-A responsive IT Service Seller web application.
+A responsive Apartment Rental Service web application
 
-[Live Website]() | [Live API Server]()
+[Live Preview](https://apartment-hunt-44387.web.app/) | [Live API Server](https://apartment-hunt-react.herokuapp.com/)
 
 ## Feature
 
 - Responsive MERN Stack project with firebase authentication, admin authentication, persistent login and dashboard functionality for customer and admin
-- Customer have ability to register in available services, check status of service(s) registered, and provide feedback
-- Only admin can update the customer service status from pending to on going to done, add new service with image and add new admin.
-- Customer need to click on service image card to register in specific service.
-- Sign in is required to register in any service or to view Customer dashboard with services status.
-- Logged in user will see a button named "Dashboard", where they can view the services they registered.
+- Client have ability to request booking for apartment, check status of requested booking from client dashboard.
+- Only admin can update the client requested booking status from pending to on going to done, add new apartment/house with image, all the apartment details and add new admin.
+- Sign in is required to request booking for any apartment or to view client dashboard with services status.
+- Logged in client will see a button named "Dashboard", where they can view the booking list they requested.
 - If Admin is logged in, admin will see a button named "Admin".
 
 Note: Only admin user have ability to view admin dashboard.
@@ -19,19 +18,19 @@ Note: Only admin user have ability to view admin dashboard.
 ## Front-end Technology
 
 - React JS
-- Firebase Authentication (Google)
+- Firebase Authentication
 - React Router, Private Router
 - React Hook Form
+- Redux, React Redux
+- redux-devtools-extension, redux-thunk
 - React Context API
 - React Hook
 - Firebase Hosting
 - Session Storage
 - React Spinners
-- React Spring
 - Bootstrap
-- CSS3
+- SCSS
 - FontAwesome
-- Faker Api
 
 ## Back-end Technology
 
@@ -45,6 +44,6 @@ Note: Only admin user have ability to view admin dashboard.
 - Dotenv
 - nodemon
 
-[Back-end Repository]()
+[Back-end Repository](https://github.com/faisalcep/apartment-hunt-server)
 
 ---

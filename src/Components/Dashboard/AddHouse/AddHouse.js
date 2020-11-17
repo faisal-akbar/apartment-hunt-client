@@ -38,7 +38,7 @@ const info ={...data}
     formData.append('property_details', info.property_details);
     formData.append('price', houseInfo.price);
 
-    fetch('http://apartment-hunt-react.herokuapp.com/addHouse', {
+    fetch('https://apartment-hunt-react.herokuapp.com/addHouse', {
       method: 'POST',
       body: formData,
     })
@@ -175,6 +175,7 @@ const info ={...data}
                 className='form-control'
                 onBlur={handleBlur}
                 name='security_deposit'
+                defaultValue="3 month’s rent"
                 type='text'
                 placeholder='Security deposit'
                 ref={register({ required: true })}

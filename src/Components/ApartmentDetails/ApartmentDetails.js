@@ -16,7 +16,7 @@ const ApartmentDetails = () => {
 
   // Get the single Service user clicked from API:
   useEffect(() => {
-    fetch(`http://apartment-hunt-react.herokuapp.com/apartments/${_id}`)
+    fetch(`https://apartment-hunt-react.herokuapp.com/apartments/${_id}`)
       .then((res) => res.json())
       .then((data) => {
         setSelectedApt(data);
@@ -29,11 +29,7 @@ const ApartmentDetails = () => {
   // handle redirected to user task
   let history = useHistory();
   function handleUserRequest() {
-    if (!loggedUser) {
-      history.push('/my-rent');
-    } else {
-      history.push(`apartment-details/${_id}`);
-    }
+    history.push('/my-rent');
   }
 
   // When user registered send the data to server and redirect user to UserDashboard
@@ -44,7 +40,7 @@ const ApartmentDetails = () => {
     newHouse.status = 'Pending';
     // newHouse.image = selectedApt.image;
 
-    fetch('http://apartment-hunt-react.herokuapp.com/addRegistration', {
+    fetch('https://apartment-hunt-react.herokuapp.com/addRegistration', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newHouse),
@@ -76,9 +72,8 @@ const ApartmentDetails = () => {
 
       <section className='container'>
         <div className='row'>
-        <PreLoader loading={loading} />
+          <PreLoader loading={loading} />
           <div className='col-md-7 mt-4'>
-          
             {selectedApt.image ? (
               <img
                 className='w-100'

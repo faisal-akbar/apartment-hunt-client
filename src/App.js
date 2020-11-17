@@ -29,7 +29,7 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    fetch('http://apartment-hunt-react.herokuapp.com/isAdmin', {
+    fetch('https://apartment-hunt-react.herokuapp.com/isAdmin', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ email: loggedInUserSession.email }),
@@ -42,7 +42,7 @@ function App() {
   const [isAdminTemp, setIsAdminTemp] = useState(false);
 
   useEffect(() => {
-    fetch('http://apartment-hunt-react.herokuapp.com/isAdmin', {
+    fetch('https://apartment-hunt-react.herokuapp.com/isAdmin', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ email: loggedInUser.email }),
