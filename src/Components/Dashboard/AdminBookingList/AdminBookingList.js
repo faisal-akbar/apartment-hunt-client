@@ -88,7 +88,7 @@ const AdminBookingList = () => {
                 {/* Project Details */}
                 Massage
               </th>
-              <th className='text-secondary' scope='col'>
+              <th className='text-secondary text-center' scope='col'>
                 Status
               </th>
             </tr>
